@@ -1,0 +1,38 @@
+{
+  "name": "pgbcp-bot",
+  "version": "2023.1.1",
+  "description": "An updated bottle collector bot for pennergame.de",
+  "preferGlobal": true,
+  "main": "Pennergame.js",
+  "scripts": {
+    "start": "node pgbcb.js -u NullPointer -p temporal1 -c Berlin -t 10"
+  },
+  "bin": {
+    "pgbcb": "pgbcb.js"
+  },
+  "directories": {},
+  "dependencies": {
+    "commander": "^2.8.1",
+    "jsdom": "^5.4.3",
+    "request": "^2.56.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pennergame",
+    "pfand",
+    "pfandflaschen",
+    "flaschen",
+    "free-hack"
+  ],
+  "author": {
+    "name": "twinsquad",
+    "email": "twinsquad.com@gmail.com",
+    "url": ""
+  },
+  "bugs": "https://github.com/twinsquad/pennergame-bottle-collector-bot/issues",
+  "repository": "twinsquad/pennergame-bottle-collector-bot",
+  "license": "MIT"
+}
