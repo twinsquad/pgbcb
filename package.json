@@ -4,9 +4,6 @@
   "description": "An updated bottle collector bot for pennergame.de",
   "preferGlobal": true,
   "main": "Pennergame.js",
-  "scripts": {
-    "start": "node pgbcb.js -u NullPointer -p temporal1 -c Berlin -t 10"
-  },
   "bin": {
     "pgbcb": "pgbcb.js"
   },
@@ -32,7 +29,7 @@
     "email": "twinsquad.com@gmail.com",
     "url": ""
   },
-  "bugs": "https://github.com/twinsquad/pennergame-bottle-collector-bot/issues",
-  "repository": "twinsquad/pennergame-bottle-collector-bot",
+  "bugs": "https://github.com/twinsquad/pgbcb/issues",
+  "repository": "twinsquad/pgbcb",
   "license": "MIT"
 }
