@@ -1,5 +1,5 @@
 {
-  "name": "pgbcp-bot",
+  "name": "pgbcb",
   "version": "2023.2.1",
   "description": "An updated bottle collector bot for pennergame.de",
   "preferGlobal": true,
