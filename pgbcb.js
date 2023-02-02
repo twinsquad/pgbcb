@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-//#!C:\Program Files\nodejs\node.exe
 
 var program = require('commander'),
     Pennergame = require('./Pennergame'),
