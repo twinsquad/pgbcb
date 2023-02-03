@@ -9,8 +9,7 @@ program
     .option('-u, --username <username>', 'Your username')
     .option('-p, --password <password>', 'Your password')
     .option('-c, --city <city>', 'The City to log in. Default: Berlin')
-    .option('-t, --time <minutes>', 'How long each collection should last.' +
-            ' Default: 10', parseInt, 10);
+    .option('-t, --time <minutes>', 'How long each collection should last. Default: 10', parseInt, 10);
 
 program.parse(process.argv);
 
