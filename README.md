@@ -12,7 +12,7 @@ Automaticaly logs in to the game and loops through:
 ## Requirements
 
 * Working [node.js] installation >= 2.1.0
-* [Pennergame] Account
+* [Pennergame] account
 
 
 ## Installation
