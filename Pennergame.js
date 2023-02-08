@@ -22,6 +22,9 @@ function Pennergame(user, city) {
         followAllRedirects: true,
         jar: true // Save cookies (in Memory)
     });
+	
+	this.getUser = function() { return user; }
+	this.getCity = function() { return city; }
 
     /**
      * Send a POST request with "x-www-form-urlencoded" Content-Type to path
@@ -133,8 +136,10 @@ function Pennergame(user, city) {
 
     // Login
     self.postIt('login/check/', user, function (state) {
-        if (state <= Pennergame.States.LOGGEDOUT) {
+		if (state == Pennergame.States.UNKNOWN) {
             self.emit('error', self.getErrors());
+        } else if (state == Pennergame.States.LOGGEDOUT) {
+            self.emit('loggedout', self.getUser(), self.getCity());
         } else {
             self.emit('loggedin');
         }
@@ -171,22 +176,25 @@ Pennergame.prototype.collect = function (minutes) {
     minutes = minutes || 10;
     self.postIt('activities/bottle/', 
 		{ sammeln: minutes, konzentrieren: 1 },
-                function (state) {
-                    switch(state) {
-			case Pennergame.States.COLLECTING:
-				self.emit('start_collect', self.getRemainingTime());
-				break;
-			case Pennergame.States.PENDING_COLLECT:
-				self.emit('pending_collect', self.getRemainingTime());
-				break;
-			case Pennergame.States.PENDING_CART:
-				self.emit('pending_cart');
-				break;
-			default:
-				self.emit('error', 'Unexpected state: ' + state);
-				break;
-                    }
-                });
+		function (state) {
+			switch(state) {
+				case Pennergame.States.COLLECTING:
+					self.emit('start_collect', self.getRemainingTime());
+					break;
+				case Pennergame.States.PENDING_COLLECT:
+					self.emit('pending_collect', self.getRemainingTime());
+					break;
+				case Pennergame.States.PENDING_CART:
+					self.emit('pending_cart');
+					break;
+				case Pennergame.States.LOGGEDOUT:
+					self.emit('loggedout', self.getUser(), self.getCity());
+					break;
+				default:
+					self.emit('error', 'Unexpected state: ' + state);
+					break;
+			}
+		});
 };
 
 /**
