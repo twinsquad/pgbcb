@@ -27,7 +27,6 @@ if (!program.password) {
     process.exit(1);
 }
 
-
 var valid_cities = Object.keys(Pennergame.Cities);
 if (program.city && valid_cities.indexOf(program.city) === -1) {
 
@@ -40,7 +39,8 @@ if (program.city && valid_cities.indexOf(program.city) === -1) {
     process.exit(1);
 }
 
-console.log('Trying to log in %s as: %s',
+console.log('[%s] Trying to log in %s as %s',
+			(new Date()).toLocaleString(),
             program.city || 'Berlin',
             program.username);
 
@@ -54,7 +54,7 @@ game.on('error', function (errors) {
 });
 
 game.on('loggedin', function (username, city) {
-    console.log('[%s] Logged in %s as: %s',
+    console.log('[%s] Logged in %s as %s',
                 (new Date()).toLocaleString(),
 				program.city || 'Berlin',
                 program.username);
@@ -81,4 +81,18 @@ game.on('clear_cart', function () {
 
 game.on('pending_cart', function () {
     game.clear_cart();
+});
+
+game.on('loggedout', function (user, city) {
+    console.log('[%s] User %s logged out from %s',
+				(new Date()).toLocaleString(),
+				user.username, 
+				city);
+	if (program && program.username && program.password) {
+		game = new Pennergame({
+			username: program.username,
+			password: program.password
+		}, program.city);
+	}
+	
 });
