@@ -176,29 +176,14 @@ Pennergame.prototype.collect = function (minutes) {
 			case Pennergame.States.COLLECTING:
 				self.emit('start_collect', self.getRemainingTime());
 				break;
-
 			case Pennergame.States.PENDING_COLLECT:
 				self.emit('pending_collect', self.getRemainingTime());
 				break;
-
 			case Pennergame.States.PENDING_CART:
 				self.emit('pending_cart');
 				break;
-
 			default:
 				self.emit('error', 'Unexpected state: ' + state);
-				
-				console.log('Trying to log in %s as: %s',
-				    city || 'Berlin',
-				    user);
-				self.postIt('login/check/', user, function (state) {
-					if (state <= Pennergame.States.LOGGEDOUT) {
-					    self.emit('error', self.getErrors());
-					} else {
-					    self.emit('loggedin');
-					}
-				});
-				
 				break;
                     }
                 });
