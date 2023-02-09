@@ -88,11 +88,4 @@ game.on('loggedout', function (user, city) {
 				(new Date()).toLocaleString(),
 				user.username, 
 				city);
-	if (program && program.username && program.password) {
-		game = new Pennergame({
-			username: program.username,
-			password: program.password
-		}, program.city);
-	}
-	
 });
